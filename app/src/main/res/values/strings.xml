@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">YBU Mobil</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="egouyari">EGO sistem değiştirdiği için bu ekran çalışmamaktadır. Eğitim öğretim dönemi başlamadan bu ekran tekrar devreye sokulacaktır.</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Ayarlar</string>
+    <string name="add_widget">Widget Ekle</string>
+
+</resources>

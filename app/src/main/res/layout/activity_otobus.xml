@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c0333333"
+    >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:gravity="center"
+        android:layout_weight="0"
+
+        >
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView1"
+            android:src="@drawable/logos"
+            android:background="#c0333333"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top"
+        android:gravity="center"
+        android:layout_weight="0"
+        android:padding="5px"
+        >
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Durak Seç"
+        android:id="@+id/otobusSec"
+        style="@style/AudioFileInfoOverlayText"
+        android:layout_gravity="center_horizontal" />
+
+        <ExpandableListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/expandableListView" />
+
+        <Gallery
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/gallery" />
+
+        <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/listOtobus"
+        android:padding="5px"
+        android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/egouyari"
+        android:id="@+id/textView2"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0"
+        android:textAlignment="gravity"
+        android:textColor="#fff"
+        android:padding="20dp" />
+
+</LinearLayout>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c0333333"
+    >
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ovacık Anadolu Lisesi Altı"
+        android:id="@+id/durak1"
+        android:layout_gravity="center_horizontal"
+    />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ovacık Ekmek Fabrikası Karşısı"
+        android:id="@+id/durak2"
+        android:layout_gravity="center_horizontal"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Etlik Osmanlı İş Merkezi"
+        android:id="@+id/durak3"
+        android:layout_gravity="center_horizontal"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Etlik Osmanlı İş Merkezi Karşısı"
+        android:id="@+id/durak4"
+        android:layout_gravity="center_horizontal"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Turgut Özal Üni. Karşısı"
+        android:id="@+id/durak5"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kızılay AVM Durağı"
+        android:id="@+id/durak6"
+        android:layout_gravity="center_horizontal"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sıhhiye"
+        android:id="@+id/durak7"
+        android:layout_gravity="center_horizontal"
+        />
+
+</LinearLayout>

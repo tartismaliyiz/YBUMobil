@@ -1,0 +1,126 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AnaSayfa"
+    android:background="#c0333333"
+    >
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:weightSum="0">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/imageView"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/logos"
+                android:background="#c0333333"
+                android:scaleType="fitCenter"
+                android:adjustViewBounds="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="0.50"
+            android:background="#c0333333"
+            >
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.5"
+                android:background="#c0333333"
+                >
+
+                <ImageButton
+                    android:id="@+id/yemekBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/yemek"
+                    android:layout_weight="0.5"
+                    android:scaleType="fitXY"
+                    android:adjustViewBounds="false" />
+                <ImageButton
+                    android:id="@+id/otobusBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:src="@drawable/ego"
+                    android:layout_weight="0.5"
+                    android:scaleType="fitXY"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.5"
+                android:background="#c0333333"
+                >
+
+                <ImageButton
+                    android:id="@+id/radyoBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.50"
+                    android:src="@drawable/yburadyo"
+                    android:scaleType="fitXY" />
+                <ImageButton
+                    android:id="@+id/ogrenciBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/ogrencibilgi"
+                    android:scaleType="fitXY"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="0.5"
+                android:background="#c0333333"
+                >
+
+                <ImageButton
+                    android:id="@+id/olsunBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/akademik"
+                    android:scaleType="fitXY" />
+                <ImageButton
+                    android:id="@+id/aboutBtn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="0.5"
+                    android:src="@drawable/hakkimizda"
+                    android:scaleType="fitXY"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

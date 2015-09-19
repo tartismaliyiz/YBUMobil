@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10px"
+    android:background="#c0333333"
+    android:weightSum="1">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:layout_weight="0"
+        android:gravity="center"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/logos"
+            android:background="#c0333333"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true" />
+    </LinearLayout>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="@string/configure" android:layout_marginBottom="8dp"
+        android:id="@+id/configure_text"
+        android:textSize="20sp"
+        android:textColor="#fff"
+        android:gravity="center" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="196dp"
+        android:id="@+id/widgetSourceList"
+        android:layout_gravity="center_horizontal" />
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.01"
+        android:id="@+id/spinnerContainer">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Güncelleme Aralığı"
+            android:id="@+id/textView3"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:textSize="20sp"
+            android:textColor="#fff"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textAlignment="gravity"
+            android:gravity="center" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/updateIntervals"
+            android:spinnerMode="dropdown"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+    <Button android:id="@+id/add_button" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="@string/add_widget"
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center_horizontal" />
+
+</LinearLayout>

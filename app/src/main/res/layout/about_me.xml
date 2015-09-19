@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c0333333"
+    android:weightSum="100"
+    >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/logohakk"
+            android:src="@drawable/logohak"
+            android:scaleType="fitStart"
+            android:adjustViewBounds="true" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="YBU Bilim ve Teknoloji Kulübü"
+            android:gravity="center_horizontal"
+            style="@style/AudioFileInfoOverlayText"
+            />
+
+
+        </LinearLayout>
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="www.ybubiltek.org"
+        android:gravity="center_horizontal"
+        android:id="@+id/ybuLink"
+        />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:layout_gravity="center_horizontal"
+                android:padding="5px"
+                >
+
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/res1"
+                        android:layout_gravity="center_vertical"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/gulsum"
+                        android:adjustViewBounds="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:layout_gravity="center_horizontal"
+                android:padding="5px"
+                >
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/res2"
+                        android:layout_gravity="right"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/melih"
+                        android:adjustViewBounds="true" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                style="@style/AudioFileInfoOverlayText2"
+                android:text="Gülsüm Gülşen Demirci \n Bilgisayar Mühendisliği"
+                android:gravity="center"
+                android:layout_weight="0.99" />
+
+            <TextView
+                android:layout_width="203dp"
+                android:layout_height="match_parent"
+                style="@style/AudioFileInfoOverlayText2"
+                android:text="Melih Yıldız \n Bilgisayar Mühendisliği"
+                android:gravity="center"
+                android:id="@+id/melih" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
