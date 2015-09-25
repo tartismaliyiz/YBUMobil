@@ -20,6 +20,33 @@ import java.util.HashMap;
 public class DuyuruWidget extends AppWidgetProvider {
     public static final String UPDATE_ONE = AnaSayfa.PACKAGE_NAME+".UPDATE_ONE_WIDGET";
     private static HashMap<Integer, Uri> uris = new HashMap<Integer, Uri>();
+    private static String last1 = "init1";
+    private static String last2 = "init2";
+    private static int deleteOnce = 0;
+
+    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+                                int appWidgetId) {
+
+        String widgetText = DuyuruWidgetConfigureActivity.loadTitlePref(context, appWidgetId);
+        Calendar c = Calendar.getInstance();
+        String currentTime = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
+        // Construct the RemoteViews object
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.duyuru_widget);
+        views.setTextViewText(R.id.appwidget_text1, last1);
+        views.setTextViewText(R.id.appwidget_text2, last2);
+        last2 = last1;
+        views.setTextViewText(R.id.appwidget_text, currentTime);
+        last1 = currentTime;
+        AnaSayfa.log("Updated at: " + currentTime);
+        AnaSayfa.log("WidgetText: " + widgetText);
+
+        // Instruct the widget manager to update the widget
+        appWidgetManager.updateAppWidget(appWidgetId, views);
+    }
+
+    public static void addUri(int id, Uri uri) {
+        uris.put(new Integer(id), uri);
+    }
 
     @Override
     public void onReceive(Context context,
@@ -42,6 +69,7 @@ public class DuyuruWidget extends AppWidgetProvider {
         else
             super.onReceive(context, intent);
     }
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // There may be multiple widgets active, so update all of them
@@ -71,20 +99,6 @@ public class DuyuruWidget extends AppWidgetProvider {
         // Enter relevant functionality for when the last widget is disabled
     }
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
-
-        String widgetText = DuyuruWidgetConfigureActivity.loadTitlePref(context, appWidgetId);
-        // Construct the RemoteViews object
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.duyuru_widget);
-        Calendar c = Calendar.getInstance();
-        views.setTextViewText(R.id.appwidget_text, c.get(c.HOUR)+":"+c.get(c.MINUTE)+":"+c.get(c.SECOND));
-        AnaSayfa.log("Updated at: " + c.get(c.HOUR) + ":" + c.get(c.MINUTE) + ":" + c.get(c.SECOND));
-        AnaSayfa.log("WidgetText: "+widgetText.split("|||")[1]);
-
-        // Instruct the widget manager to update the widget
-        appWidgetManager.updateAppWidget(appWidgetId, views);
-    }
     protected void cancelAlarmManager(Context context, int widgetID)
     {
         AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
@@ -100,11 +114,33 @@ public class DuyuruWidget extends AppWidgetProvider {
                 PendingIntent.FLAG_UPDATE_CURRENT);
         alarm.cancel(pendingIntentAlarm);
         uris.remove(widgetID);
-    }
 
-    public static void addUri(int id, Uri uri)
-    {
-        uris.put(new Integer(id), uri);
+        // When the program reinstalled, clear remaining alarm managers in the first remove.
+        if (DuyuruWidgetConfigureActivity
+                .loadTitlePref(context, -1000)
+                .equalsIgnoreCase("example")) {
+            for (int widgetIDtemp : uris.keySet()) {
+                AlarmManager alarmtemp = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+                Intent intentUpdatetemp = new Intent(context, DuyuruWidget.class);
+                //AlarmManager are identified with Intent's Action and Uri.
+                intentUpdatetemp.setAction(DuyuruWidget.UPDATE_ONE);
+                //Don't put the uri to cancel all the AlarmManager with action UPDATE_ONE.
+                intentUpdatetemp.setData(uris.get(widgetIDtemp));
+                intentUpdatetemp.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetIDtemp);
+                PendingIntent pendingIntentAlarmtemp = PendingIntent.getBroadcast(context,
+                        0,
+                        intentUpdatetemp,
+                        PendingIntent.FLAG_UPDATE_CURRENT);
+                alarmtemp.cancel(pendingIntentAlarmtemp);
+            }
+            uris.clear();
+            DuyuruWidgetConfigureActivity.saveTitlePref(context, -1000, "cleared");
+            AnaSayfa.log("Cancelled all alarm managers.");
+        } else {
+            AnaSayfa.log("Not cancelled all alarm managers.");
+        }
+
+
     }
 }
 
