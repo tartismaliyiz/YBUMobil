@@ -2,7 +2,6 @@ package io.smartface.MobileYBU;
 
 import android.content.Context;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,9 +20,9 @@ import java.util.ArrayList;
 public class DuyuruWidgetConfigureListAdapter extends ArrayAdapter<JSONObject> {
     private final Context context;
     private final ArrayList<JSONObject> values;
-    private int rowViewID;
     Boolean[] cbChecked = {false};
     int nOfElements;
+    private int rowViewID;
 
     public DuyuruWidgetConfigureListAdapter(Context context, int rowView, ArrayList<JSONObject> values, String[] preCheck) {
         super(context, rowView, values);
@@ -34,11 +33,7 @@ public class DuyuruWidgetConfigureListAdapter extends ArrayAdapter<JSONObject> {
         cbChecked = new Boolean[ nOfElements ];
         for(int i = 0;i<nOfElements;i++){
             try {
-                if(preCheck != null && (preCheck[i] != null || preCheck[i] != "") && values.get(i).getString("sourceLink").equalsIgnoreCase(preCheck[i])){
-                    cbChecked[i] = true;
-                }else{
-                    cbChecked[i] = false;
-                }
+                cbChecked[i] = preCheck != null && (preCheck[i] != null || preCheck[i].equalsIgnoreCase("")) && values.get(i).getString("sourceLink").equalsIgnoreCase(preCheck[i]);
             } catch (JSONException e) {
                 e.printStackTrace();
             }catch(ArrayIndexOutOfBoundsException e){
@@ -91,9 +86,10 @@ public class DuyuruWidgetConfigureListAdapter extends ArrayAdapter<JSONObject> {
     }
 
     public String[] getCheckedItems() {
-        String[] returnV = new String[this.countSelectedCB()];
+        int totalCount = this.countSelectedCB();
+        String[] returnV = new String[totalCount];
         int j = 0;
-        for(int i=0;i<this.countSelectedCB();i++){
+        for (int i = 0; i < totalCount; i++) {
             if(cbChecked[i]){
                 try {
                     returnV[j] = values.get(i).getString("sourceLink");
