@@ -13,31 +13,44 @@ import java.util.ArrayList;
 /**
  * Created by YILDIZ on 06.08.2015.
  */
-public class DuyuruWidgetJson {
+public class DuyuruWidgetConfigureJson {
+    public volatile boolean parsingComplete = true;
     private ArrayList<JSONObject> sources = new ArrayList<JSONObject>();
     private ArrayList<String> intervalDescs = new ArrayList<String>();
     private ArrayList<Integer> intervalInts = new ArrayList<Integer>();
     private String urlString = null;
-    public volatile boolean parsingComplete = true;
-    public DuyuruWidgetJson(String url){
+
+    public DuyuruWidgetConfigureJson(String url) {
         this.urlString = url;
     }
-    public ArrayList<JSONObject> getSources(){
+
+    static String convertStreamToString(InputStream is) {
+        java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
+        return s.hasNext() ? s.next() : "";
+    }
+
+    public ArrayList<JSONObject> getSources() {
         return sources;
     }
-    public ArrayList<String> getIntervalDescs(){ return intervalDescs; }
-    public ArrayList<Integer> getIntervalInts() { return intervalInts; }
+
+    public ArrayList<String> getIntervalDescs() {
+        return intervalDescs;
+    }
+
+    public ArrayList<Integer> getIntervalInts() {
+        return intervalInts;
+    }
 
     @SuppressLint("NewApi")
     public void readAndParseJSON(String in) {
         try {
             JSONArray allData = new JSONArray(in);
             JSONArray allSources = allData.getJSONArray(1);
-            for(int i=0;i<allSources.length();i++){
+            for (int i = 0; i < allSources.length(); i++) {
                 sources.add(allSources.getJSONObject(i));
             }
             JSONArray allIntervals = allData.getJSONArray(0);
-            for(int i=0;i<allIntervals.length();i++){
+            for (int i = 0; i < allIntervals.length(); i++) {
                 intervalDescs.add(allIntervals.getJSONObject(i).getString("desc"));
                 intervalInts.add(Integer.parseInt(allIntervals.getJSONObject(i).getString("int")));
             }
@@ -46,8 +59,9 @@ public class DuyuruWidgetJson {
             e.printStackTrace();
         }
     }
-    public void fetchJSON(){
-        Thread thread = new Thread(new Runnable(){
+
+    public void fetchJSON() {
+        Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -69,9 +83,5 @@ public class DuyuruWidgetJson {
             }
         });
         thread.start();
-    }
-    static String convertStreamToString(InputStream is) {
-        java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
-        return s.hasNext() ? s.next() : "";
     }
 }
